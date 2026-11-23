@@ -6,6 +6,7 @@
   --soft: rgba(255,255,255,.72);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: hidden; max-width: 100%; }
 
 body {
   font-family: "Outfit", sans-serif;
@@ -21,8 +22,8 @@ body::before, body::after {
   content: ""; position: fixed; border-radius: 50%; z-index: 0; pointer-events: none;
   filter: blur(80px); opacity: .45;
 }
-body::before { width: 420px; height: 420px; top: -120px; right: -80px; background: var(--glow); }
-body::after  { width: 360px; height: 360px; bottom: -140px; left: -100px; background: var(--b); opacity: .7; }
+body::before { width: min(420px, 80vw); height: min(420px, 80vw); top: -120px; right: 0; background: var(--glow); }
+body::after  { width: min(360px, 70vw); height: min(360px, 70vw); bottom: -140px; left: 0; background: var(--b); opacity: .7; }
 
 body.intro  { --a:#7b5cff; --b:#14b8c8; --glow:#ff8ad8; }
 body.clear  { --a:#4facfe; --b:#1d4fd8; --glow:#bfe6ff; }
@@ -74,7 +75,7 @@ h2 { font-size: 15px; font-weight: 500; color: var(--soft); margin-bottom: 14px;
 
 .weather {
   display: grid; gap: 16px; margin-top: 20px;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas: "main" "details" "hours" "days";
 }
 .main { grid-area: main; padding: 48px 30px 44px; text-align: center; position: relative; overflow: hidden;
@@ -139,3 +140,24 @@ h2 { font-size: 15px; font-weight: 500; color: var(--soft); margin-bottom: 14px;
 .sun .arc { fill: none; stroke: rgba(255,255,255,.45); stroke-width: 2; stroke-dasharray: 4 6; }
 .sun .dot { fill: #ffd36e; filter: drop-shadow(0 0 10px #ffd36e); }
 .sun .times { display: flex; justify-content: space-between; width: 100%; max-width: 270px; }
+
+/* small phones */
+@media (max-width: 480px) {
+  .app { padding: 18px 12px 40px; }
+  .main { padding: 32px 14px 30px; }
+  .place { font-size: 26px; }
+  .now { gap: 10px; }
+  .temp { font-size: 88px; letter-spacing: -3px; }
+  .icon { width: 72px; height: 72px; font-size: 36px; }
+  .desc { font-size: 22px; }
+  .tip { font-size: 14px; padding: 8px 14px; }
+  .details { gap: 12px; }
+  .details .card { padding: 18px 8px; }
+  .details .sun { padding: 16px 12px; }
+  .card { border-radius: 22px; padding: 16px; }
+  .day { grid-template-columns: 74px 28px 32px 1fr 32px; gap: 6px; font-size: 14px; }
+}
+
+/* stop wide content (hourly row) from stretching the whole page */
+.weather > *, .app { min-width: 0; max-width: 100%; }
+.hourly { max-width: 100%; }
