@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="intro">
+  <canvas id="fx"></canvas>
+  <main class="app">
+    <header class="top">
+      <form id="searchForm" class="search">
+        <input id="cityInput" type="text" placeholder="Search city..." aria-label="City name" required>
+        <button type="submit">Search</button>
+      </form>
+      <button id="unitBtn" class="unit" aria-label="Switch unit">°C</button>
+    </header>
+
+    <div id="recent" class="chips"></div>
+    <p id="message" class="message" hidden></p>
+
+    <section id="intro" class="hero">
+      <div class="orb">☁️</div>
+      <h1>Weather, wherever you are</h1>
+      <p>Search any city or allow location to see today's weather and the days ahead.</p>
+    </section>
+
+    <section id="weather" class="weather" hidden>
+      <div class="card main">
+        <p class="place" id="place"></p>
+        <p class="date" id="date"></p>
+        <div class="now">
+          <span class="icon" id="icon"></span>
+          <span class="temp" id="temp"></span>
+        </div>
+        <p class="desc" id="desc"></p>
+        <p class="feels" id="feels"></p>
+        <p class="tip" id="tip"></p>
+      </div>
+
+      <div class="details">
+        <div class="card"><i class="e">💧</i><div><span>Humidity</span><br><b id="humidity"></b></div></div>
+        <div class="card"><i class="e">🌬️</i><div><span>Wind</span><br><b id="wind"></b></div></div>
+        <div class="card sun">
+          <svg viewBox="0 0 200 100" aria-hidden="true"><path class="arc" d="M10 95 A90 90 0 0 1 190 95"/><circle id="sunDot" class="dot" r="7" cx="10" cy="95"/></svg>
+          <div class="times"><div><span>Sunrise</span><br><b id="sunrise"></b></div><div><span>Sunset</span><br><b id="sunset"></b></div></div>
+        </div>
+      </div>
+
+      <div class="card hours">
+        <h2>Next hours</h2>
+        <div class="hourly" id="hourly"></div>
+      </div>
+
+      <div class="card days">
+        <h2>5-day forecast</h2>
+        <ul class="daily" id="daily"></ul>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
