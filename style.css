@@ -161,3 +161,14 @@ h2 { font-size: 15px; font-weight: 500; color: var(--soft); margin-bottom: 14px;
 /* stop wide content (hourly row) from stretching the whole page */
 .weather > *, .app { min-width: 0; max-width: 100%; }
 .hourly { max-width: 100%; }
+
+/* keep the unit button visible on small screens */
+.search { min-width: 0; }
+input { min-width: 0; width: 100%; }
+.unit { flex-shrink: 0; }
+@media (max-width: 480px) {
+  .top { gap: 8px; }
+  .search { padding-left: 14px; }
+  button { padding: 10px 16px; }
+  .unit { width: 46px; height: 46px; padding: 0; }
+}
